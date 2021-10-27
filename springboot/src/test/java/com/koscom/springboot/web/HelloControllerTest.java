@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 //junit5로 테스트 코드를 짤건데 spring으로 테스트 짤거다
 @ExtendWith(SpringExtension.class)
-@WebMvcTest
+@WebMvcTest(controllers = HelloController.class)
 public class HelloControllerTest {
 
     //적절한 bin이 주입됨.
