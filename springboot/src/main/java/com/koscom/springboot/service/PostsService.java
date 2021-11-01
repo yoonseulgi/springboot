@@ -2,6 +2,7 @@ package com.koscom.springboot.service;
 
 import com.koscom.springboot.domain.posts.Posts;
 import com.koscom.springboot.domain.posts.PostsRepository;
+import com.koscom.springboot.web.dto.posts.PostsResponseDto;
 import com.koscom.springboot.web.dto.posts.PostsUpdateRequestDto;
 import com.koscom.springboot.web.dto.posts.PostssaveRequestDto;
 import javafx.geometry.Pos;
@@ -62,5 +63,13 @@ but, 권장하지 않는 방법.
         캐싱된 값과 객체의 값이 다를 때 자동으로 디비에 적용시킴.
          */
         return entity.getId();
+    }
+
+    //조회
+    public PostsResponseDto findById(Long id) {
+        Posts entity = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자는 없습니다. id = "+ id));
+
+        return new PostsResponseDto(entity);
     }
 }
